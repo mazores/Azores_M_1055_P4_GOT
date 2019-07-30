@@ -8,7 +8,8 @@
 		houseVideo = document.querySelector('.house-video'),
 		bannerImages = document.querySelector('#houseImages'),
 		houseName = document.querySelector('#house-name'),
-		houseInfo = document.querySelector('.house-info');
+		houseInfo = document.querySelector('.house-info'),
+		pauseButton = document.querySelector(".fa-pause-circle");
 
 	const houseData = [ // houseData[0][1]
 		["stark", `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.`], 
@@ -25,6 +26,13 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`]
 	];
 
+	//pause video on click
+	function pauseVideo() {
+		houseVideo.pause();
+	}
+
+	//write other function for custom vi controls (play, volume control, time counter, progress bar scrubber, etc.)
+
 	function popLightBox() {
 		//debug this so far and make sure the event handling works
 		//debugger;
@@ -33,6 +41,25 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		//make lightbox show up
 		lightBox.classList.add('show-lightbox');
 
+		// grab a reference to the current vid in the className object
+		//debugger;
+		// get className property, split it into its separate words (an array), and 
+		// then get the last word -> [1] -> that will always be the house name
+		let houseName = this.className.split(" ")[1];
+
+		// capitalize first letter with JavaScript string methods
+		// converting first letter 
+		// housename-uupercase = just gives B
+		// slice1 = remove first letter, giv me aratheon of Baratheon
+		houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+
+		// use JavaScript string interpolation to build the path to the target video
+		let videoPath = `video/House-${houseName}.mp4`;
+
+		//load this new video videoPath
+		houseVideo.src = videoPath;
+		houseVideo.load();
+	
 		houseVideo.play();
 	}
 
@@ -61,14 +88,18 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		houseName.textContent = `House ${houseData[multiplier][0]}`;
 		houseInfo.textContent = houseData[multiplier][1];
 		//debugger;
-
 	}
 
-	//sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
-	
-	sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+
+	sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
+	//sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
 
 	closeButton.addEventListener("click", closeLightBox);
 
 	houseVideo.addEventListener('ended', closeLightBox);
+
+	pauseButton.addEventListener("click", pauseVideo);
 })();
+//this.className.split()
+//this.className.split(" ")[1] = break apart at space, 1 is 2nd
+//"baratheon" 
