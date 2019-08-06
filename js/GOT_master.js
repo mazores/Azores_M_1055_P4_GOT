@@ -23,8 +23,17 @@ The Lannisters rule over the Westerlands. Their seat is Casterly Rock, a massive
 		["greyjoy", `House Greyjoy of Pyke is one of the Great Houses of Westeros. It rules over the Iron Islands, a harsh and bleak collection of islands off the west coast of Westeros, from the castle at Pyke. The head of the house is the Lord Reaper of Pyke.
 
 House Greyjoy's sigil is traditionally a golden kraken on a black field. Their house words are "We Do Not Sow," although the phrase "What Is Dead May Never Die" is also closely associated with House Greyjoy and their bannermen, as they are associated with the faith of the Drowned God.`], 
-		["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`]
+		["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`],
+
+		["frey", `House Frey of the Twins is the former Great House of the Riverlands, having gained their position for their treachery against their former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully had supported the independence movement for the Kingdom of the North.
+
+		Their ancestral seat is known as the Twins for its two identical keeps on both sides of a river linked by a bridge, sometimes called the Stone Bridge. The Twins is one of the primary crossings over the Green Fork of the Trident River, and tolls from bridge crossings have made the Freys quite wealthy fairly quickly, elevating them from obscurity six centuries ago to being one of the most powerful noble houses in the Riverlands - though they are looked down upon by older aristocratic families. The construction of the Twins took the Freys for three centuries, and ever since they have grown wealthy by charging the travelers crossing the Twins.`],
+
+		["tyrell", `House Tyrell began as a cadet branch of House Gardener, the ancient Kings of the Reach. The Tyrells became senior servants of the main Gardener line, serving for centuries as stewards of the royal castle at Highgarden. Over time they rose to prominence as one of the strongest noble Houses in the Reach, and even intermarried with the royal line - though so did many other powerful Houses from the Reach.`],
+
+		["targaryen", `House Targaryen of Dragonstone is an exiled Great House of Westeros and the former royal house of the Seven Kingdoms. House Targaryen conquered and unified the realm before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. The bloodline of House Targaryen also still exists in various houses, such as House Baratheon, House Velaryon, and House Martell.`]
 	];
+	
 
 	//pause video on click
 	function pauseVideo() {
@@ -99,6 +108,8 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 	houseVideo.addEventListener('ended', closeLightBox);
 
 	pauseButton.addEventListener("click", pauseVideo);
+
+
 })();
 //this.className.split()
 //this.className.split(" ")[1] = break apart at space, 1 is 2nd
