@@ -7,9 +7,11 @@
 		closeButton = document.querySelector('.close-lightbox'),
 		houseVideo = document.querySelector('.house-video'),
 		bannerImages = document.querySelector('#houseImages'),
-		houseName = document.querySelector('#house-name'),
+		familyName = document.querySelector('#house-name'),
 		houseInfo = document.querySelector('.house-info'),
 		pauseButton = document.querySelector(".fa-pause-circle");
+
+	let targetHouse = "";
 
 	const houseData = [ // houseData[0][1]
 		["stark", `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.`], 
@@ -33,13 +35,18 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 
 	//write other function for custom vi controls (play, volume control, time counter, progress bar scrubber, etc.)
 
-	function popLightBox() {
-		//debug this so far and make sure the event handling works
-		//debugger;
+	function animateBanners() {
+		// we need an offset that we can multiply by to animate
+		// our banner to the left and make the active one show up
 		
+		let offset = 600,
+			multiplier = this.dataset.offset; //this is the data-offset custom data attribute
+			//on each of the sigils
+		console.log((offset * multiplier) + "px");
+		console.log('Banner moved!');
 
-		//make lightbox show up
-		lightBox.classList.add('show-lightbox');
+		//move banners to left using product of math
+		bannerImages.style.right = `${offset * multiplier + "px"}`;
 
 		// grab a reference to the current vid in the className object
 		//debugger;
@@ -51,16 +58,34 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		// converting first letter 
 		// housename-uupercase = just gives B
 		// slice1 = remove first letter, giv me aratheon of Baratheon
-		houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+		targetHouse = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+
+		//change the house name on the page at the same time
+		//houseName.textContent = "House" + houseData[multiplier];
+		familyName.textContent = `House ${houseData[multiplier][0]}`;
+		houseInfo.textContent = houseData[multiplier][1];
+		//debugger;
+		
+
+
+	}
+
+	function popLightBox() {
+		//debug this so far and make sure the event handling works
+		//debugger;
+		
+
+		//make lightbox show up
+		lightBox.classList.add('show-lightbox');
 
 		// use JavaScript string interpolation to build the path to the target video
-		let videoPath = `video/House-${houseName}.mp4`;
+		//debugger
+		let videoPath = `video/House-${targetHouse}.mp4`;
 
 		//load this new video videoPath
 		houseVideo.src = videoPath;
 		houseVideo.load();
-	
-		houseVideo.play();
+		houseVideo.play();	
 	}
 
 	function closeLightBox(event) {
@@ -71,34 +96,19 @@ House Greyjoy's sigil is traditionally a golden kraken on a black field. Their h
 		houseVideo.pause();
 	}
 
-	function animateBanners() {
-		// we need an offset that we can multiply by to animate
-		// our banner to the left and make the active one show up
-		
-		let offset = 600
-			multiplier = this.dataset.offset; //this is the data-offset custom data attribute
-			//on each of the sigils
-		console.log((offset * multiplier) + "px");
+	
+	sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+	//sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
 
-		//move banners to left using product of math
-		bannerImages.style.right = `${offset * multiplier + "px"}`;
-
-		//change the house name on the page at the same time
-		//houseName.textContent = "House" + houseData[multiplier];
-		houseName.textContent = `House ${houseData[multiplier][0]}`;
-		houseInfo.textContent = houseData[multiplier][1];
-		//debugger;
-	}
-
-
-	sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
-	//sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
 
 	closeButton.addEventListener("click", closeLightBox);
 
 	houseVideo.addEventListener('ended', closeLightBox);
 
 	pauseButton.addEventListener("click", pauseVideo);
+
+	bannerImages.addEventListener('transitionend', popLightBox);
+
 })();
 //this.className.split()
 //this.className.split(" ")[1] = break apart at space, 1 is 2nd
