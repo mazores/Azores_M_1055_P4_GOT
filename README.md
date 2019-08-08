@@ -19,12 +19,17 @@ cd to the directory of your choice, clone, and hack away!
 ## Authors
 
 Mikka Azores 
+
 [Email](mailto:m_azores91446@fanshaweonline.ca)
 
 ## Tools used
 
 HTML, CSS, JS
+
 Adobe Illustrator
+
 Adobe Photoshop
+
 Github
+
 Sublime
