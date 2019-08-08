@@ -36,7 +36,7 @@ main {
 	overflow:hidden;
 }
 
-#houseImages { position:relative; width:4000px; transition: all .5s; }
+#houseImages { position:relative; width:5400px; transition: all .5s; }
 #houseImages img { float:left; }
 
 .house-info { 
@@ -52,6 +52,7 @@ main {
 #navList li {
 	display:inline;
 	list-style-type:none;
+	margin-top:10px;
 	padding:0px 10px;
 	cursor:pointer;
 }
@@ -62,6 +63,7 @@ main {
 .sigilContainer {
 	width:51px;
 	height:54px;
+	margin-top:20px;
 	display:inline-block;
 	overflow:hidden;
 	background-image:url(../images/GOT_sprites.png);
@@ -88,6 +90,16 @@ main {
 
 .arryn { background-position:-253px -54px; }
 .arryn:hover { background-position:-253px 0px; }
+
+.frey { background-position:-304px -54px; }
+.frey:hover { background-position:-304px 0px; }
+
+.tyrell { background-position:-355px -54px; }
+.tyrell:hover { background-position:-355px 0px; }
+
+.targaryen { background-position:-406px -54px; }
+.targaryen:hover { background-position:-406px 0px; }
+
 /* ----- end image sprite ----- */
 
 /* ----- classes for transitions ----- */
@@ -114,7 +126,7 @@ main {
 	display: none;
 }
 
-.show-lightbox { display: block; }
+.show-lightbox { display: block; overflow: hidden; }
 
 .close-lightbox {
 	float: right;
@@ -123,14 +135,16 @@ main {
 }
 
 video {
-	width: 85%;
-	margin: 5% auto 10% auto;
+	width: 75%;
+	margin: 2% auto 10% auto;
 	border: thin solid #949393;
 	display: block;
 }
 
-.video-controls i {
-	color: white;
-	font-size: 2em;
+.video-controls img {
+	width: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
 	cursor: pointer;
 }
+
